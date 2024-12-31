@@ -1,9 +1,12 @@
 const express = require('express');
 const path = require('path');
 const{connectToMongoDb}= require('./connect');
+
+const URL= require('./models/url');
+
 const urlRouter = require('./router/url');
 const staticRouter = require('./router/staticRouter');
-const URL= require('./models/url');
+const userRouter = require('./router/user');
 
 const app = express();
 
@@ -26,6 +29,7 @@ app.use(express.urlencoded({extended: false}));//middleware for pass the the for
 // });
 
 app.use("/url", urlRouter);
+app.use("/user", userRouter);
 app.use("/", staticRouter);
 app.use('/url/:shortId', async(req, res)=>{
     const shortId = req.params.shortId;

@@ -23,8 +23,8 @@
     </form>
    </div>
    <div>
-    <% if (locals.urls) { %>
-     <table>
+    <% if (locals.urls && locals.urls.length > 0) { %>
+     <table border="1">
       <thead>
         <th>SR.no</th>
         <th>SHORT ID</th>
@@ -37,7 +37,7 @@
         <tr>
          <td><%= index+1 %></td>
          <td><%= url.shortId %></td>
-         <td><%= url.redirectURL %></td>
+         <td><a href="<%= url.redirectURL %>"><%= url.redirectURL %></a></td>
          <td><%= url.visitHistory.length %></td>
         </tr>
         <% }) %>
